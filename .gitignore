@@ -1,3 +1,20 @@
+# Seminar - Stezifisch
+
+reh_karte.json
+ergebnis_bild.jpg
+*.pth
+Eingang
+Ausgang
+Erledigt
+reh_karte.json
+
+
+
+
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

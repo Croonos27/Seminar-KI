@@ -42,15 +42,23 @@ def main():
     # Unser Dataset hat 2 Klassen: Hintergrund und Reh
     num_classes = 2
 
-    # Dataset laden
-    # HINWEIS: Passe '../RehDaten' an, falls dein Datenordner woanders liegt.
-    # Wenn 'RehDaten' im selben Ordner wie der Code liegt, nutze 'RehDaten'.
-    data_path = 'RehDaten' 
-    if not os.path.exists(data_path):
-        # Fallback: Versuche einen Ordner höher zu suchen, falls Code in Unterordner liegt
-        data_path = '../RehDaten'
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     
-    print(f"Suche Daten in: {data_path}")
+    # 2. Gehe einen Ordner nach oben (zum "Überordner")
+    parent_dir = os.path.dirname(script_dir)
+    
+    # 3. Baue den Pfad zu RehDaten
+    data_path = os.path.join(parent_dir, 'RehDaten')
+    
+    print(f"Skript liegt in: {script_dir}")
+    print(f"Suche Daten in:  {data_path}")
+
+    # Sicherheits-Check vor dem Absturz
+    if not os.path.exists(data_path):
+        print(f"❌ FEHLER: Der Ordner '{data_path}' existiert nicht!")
+        # Zeige, was im Überordner tatsächlich drin ist
+        print(f"Inhalt von '{parent_dir}': {os.listdir(parent_dir)}")
+        return
     
     dataset = RehMaskDataset(data_path, get_transform(train=True))
     dataset_test = RehMaskDataset(data_path, get_transform(train=False))

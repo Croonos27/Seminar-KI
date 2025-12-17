@@ -51,7 +51,7 @@ model.to(device)
 
 # --- 3. Bild laden und vorbereiten ---
 # HIER BITTE DEN NAMEN DEINES TEST-BILDES EINTRAGEN:
-image_path = "./reh_test_bild.jpg" 
+image_path = "./DSC_9585.jpg" 
 
 if not os.path.exists(image_path):
     print(f"❌ FEHLER: Bilddatei '{image_path}' nicht gefunden! Bitte Pfad anpassen.")
@@ -79,7 +79,7 @@ pred_scores = prediction[0]['scores']
 
 # --- 5. Ergebnisse filtern ---
 # Nur Ergebnisse mit hoher Wahrscheinlichkeit (z.B. > 70%) behalten
-threshold = 0.7
+threshold = 0.80
 keep = pred_scores > threshold
 
 filtered_boxes = pred_boxes[keep]
@@ -145,8 +145,10 @@ if len(filtered_boxes) > 0:
         image=image_to_draw,
         boxes=filtered_boxes,
         labels=labels_with_scores,
-        colors="lime", # Helles Grün für Rehe
-        width=4
+        colors="#4287f5",
+        width=8,
+        font= "arial.ttf",
+        font_size=40
     )
 else:
     result_image = image_to_draw # Einfach das Originalbild nehmen
