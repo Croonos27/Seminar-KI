@@ -26,7 +26,7 @@ INPUT_FOLDER = os.path.join(BASE_DIR, "Eingang")
 OUTPUT_FOLDER = os.path.join(BASE_DIR, "Ausgang")
 PROCESSED_FOLDER = os.path.join(BASE_DIR, "Erledigt")
 
-MODEL_PATH = os.path.join(BASE_DIR, "mein_reh_masken_modell.pth")
+MODEL_PATH = os.path.join(BASE_DIR, "best_reh_model.pth")
 JSON_FILENAME = os.path.join(BASE_DIR, "reh_karte.json")
 FONT_PATH = os.path.join(BASE_DIR, "arial.ttf")
 
@@ -57,7 +57,7 @@ if os.path.exists(MODEL_PATH):
 else:
     print(f"❌ FEHLER: Modelldatei nicht gefunden!")
     print(f"   Erwarteter Pfad: {MODEL_PATH}")
-    print("   Bitte kopiere 'mein_reh_masken_modell.pth' in den Ordner.")
+    print("   Bitte kopiere 'best_reh_model.pth' in den Ordner.")
     time.sleep(10)
     sys.exit()
 
